@@ -1,5 +1,5 @@
-# Forms-with-React-Js
-Forms made with React Js components
+# Form-with-React-Js
+Form made with React Js components
 
 To run the project in your machine:-
 
