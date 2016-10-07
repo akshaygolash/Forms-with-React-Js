@@ -40250,8 +40250,16 @@
 	      lastName: {
 	        'label': 'Last Name ',
 	        'placeHolder': 'Enter your last name'
+	      },
+	      gender: {
+	        'label': 'Gender',
+	        'gender1': 'Male',
+	        'gender2': 'Female'
+	      },
+	      dropdownMenu: {
+	        'menuName': 'Select Membership Level',
+	        dropdownValues: ['Ultimate', 'Platinum', 'Gold']
 	      }
-
 	    };
 	    return _this;
 	  }
@@ -40262,11 +40270,26 @@
 	      return _react2.default.createElement(
 	        'form',
 	        null,
-	        _react2.default.createElement('div', { id: 'row' }),
-	        _react2.default.createElement(Label, { labelData: this.state.firstName }),
-	        _react2.default.createElement(InputBox, { inputData: this.state.firstName }),
-	        _react2.default.createElement(Label, { labelData: this.state.lastName }),
-	        _react2.default.createElement(InputBox, { inputData: this.state.lastName })
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'form-group' },
+	          _react2.default.createElement(Label, { labelData: this.state.firstName }),
+	          _react2.default.createElement(InputBox, { inputData: this.state.firstName })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'form-group' },
+	          _react2.default.createElement(Label, { labelData: this.state.lastName }),
+	          _react2.default.createElement(InputBox, { inputData: this.state.lastName })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'form-group' },
+	          _react2.default.createElement(Label, { labelData: this.state.gender }),
+	          _react2.default.createElement(RadioBtn, { genderType: this.state.gender.gender1 }),
+	          _react2.default.createElement(RadioBtn, { genderType: this.state.gender.gender2 })
+	        ),
+	        _react2.default.createElement(DropdownMenu, { dropdownMenuProp: this.state.dropdownMenu })
 	      );
 	    }
 	  }]);
@@ -40309,11 +40332,93 @@
 	  _createClass(InputBox, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('input', { type: 'text', 'class': 'form-control', id: 'inputText', placeholder: this.props.inputData.placeHolder });
+	      return _react2.default.createElement('input', { type: 'text', placeholder: this.props.inputData.placeHolder });
 	    }
 	  }]);
 
 	  return InputBox;
+	}(_react2.default.Component);
+
+	var RadioBtn = function (_React$Component4) {
+	  _inherits(RadioBtn, _React$Component4);
+
+	  function RadioBtn() {
+	    _classCallCheck(this, RadioBtn);
+
+	    return _possibleConstructorReturn(this, (RadioBtn.__proto__ || Object.getPrototypeOf(RadioBtn)).apply(this, arguments));
+	  }
+
+	  _createClass(RadioBtn, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'label',
+	        null,
+	        _react2.default.createElement('input', { type: 'radio' }),
+	        this.props.genderType
+	      );
+	    }
+	  }]);
+
+	  return RadioBtn;
+	}(_react2.default.Component);
+
+	var DropdownMenu = function (_React$Component5) {
+	  _inherits(DropdownMenu, _React$Component5);
+
+	  function DropdownMenu() {
+	    _classCallCheck(this, DropdownMenu);
+
+	    return _possibleConstructorReturn(this, (DropdownMenu.__proto__ || Object.getPrototypeOf(DropdownMenu)).apply(this, arguments));
+	  }
+
+	  _createClass(DropdownMenu, [{
+	    key: 'render',
+	    value: function render() {
+	      var names = ['Jake', 'Jon', 'Thruster'];
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'dropdown' },
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+	          this.props.dropdownMenuProp.menuName,
+	          _react2.default.createElement('span', { className: 'caret' })
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'dropdown-menu' },
+	          names.map(function (name, index) {
+	            return _react2.default.createElement(
+	              'li',
+	              { key: index },
+	              name
+	            );
+	          }),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'Platinum'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'Gold'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return DropdownMenu;
 	}(_react2.default.Component);
 
 	exports.default = ReactForms;
